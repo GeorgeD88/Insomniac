@@ -12,7 +12,7 @@ class Gamertag(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def new(self, ctx):
+    async def newtag(self, ctx):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         author_id = str(ctx.message.author.id)
@@ -26,7 +26,7 @@ class Gamertag(commands.Cog):
             await ctx.send('Created new library under this user')
 
     @commands.command()
-    async def add(self, ctx, platform, tag):
+    async def addtag(self, ctx, platform, tag):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         author_id = str(ctx.message.author.id)
@@ -35,7 +35,7 @@ class Gamertag(commands.Cog):
             json.dump(data, out_file)
 
     @commands.command()
-    async def view(self, ctx, mention, platform):
+    async def viewtag(self, ctx, mention, platform):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         if platform.lower() == 'all':
