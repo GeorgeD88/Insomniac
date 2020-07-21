@@ -17,12 +17,13 @@ class Gamertag(commands.Cog):
             data = json.load(in_file)
         author_id = str(ctx.message.author.id)
         if author_id in list(data.keys()):
-            await ctx.send('Gamertag library already exists')
+            await ctx.send('This user already has a gamertag library')
             print('command aborted: id already exists')
         else:
             data[author_id] = {}
             with open(gamertags, 'w') as out_file:
                 json.dump(data, out_file)
+            await ctx.send('Created new library under this user')
 
     @commands.command()
     async def add(self, ctx, platform, tag):
