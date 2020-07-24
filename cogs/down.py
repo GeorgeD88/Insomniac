@@ -17,7 +17,7 @@ class Down(commands.Cog):
         self.bot = bot
 
     @commands.command()  # TODO: Add any emoji
-    async def down(self, ctx, contains):
+    async def down(self, ctx, contains=None):
         global seeking
         if ctx.message.author.id != configuration.owner_id:
             embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)

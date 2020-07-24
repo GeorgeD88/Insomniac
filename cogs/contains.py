@@ -17,7 +17,7 @@ class Contains(commands.Cog):
         self.bot = bot
 
     @commands.command()  # TODO: Add any emoji
-    async def nope(self, ctx, contains):
+    async def nope(self, ctx, contains=None):
         global seeking
         if ctx.message.author.id != configuration.owner_id:
             embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)
@@ -32,7 +32,7 @@ class Contains(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if seeking is not None and seeking in message.content.lower() and message.content.lower() != 'i!check ' + str(seeking):
+        if seeking is not None and seeking in message.content.lower() and message.content.lower() != 'i!nope ' + str(seeking):
             await message.delete()
             await message.channel.send('no:heart:')
             print(f'noped {seeking} in {str(message.channel)}: {message.content}')
