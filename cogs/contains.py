@@ -11,7 +11,7 @@ import os
 seeking = None
 
 
-class Down(commands.Cog):
+class Contains(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -32,11 +32,11 @@ class Down(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if seeking in message.content.lower() and seeking is not None:
+        if seeking is not None and seeking in message.content.lower() and message.content.lower() != 'i!check ' + str(seeking):
             await message.delete()
             await message.channel.send('no:heart:')
-            print(f'avoided {seeking} in {str(message.channel)}')
+            print(f'noped {seeking} in {str(message.channel)}: {message.content}')
 
 
 def setup(bot):
-    bot.add_cog(Down(bot))
+    bot.add_cog(Contains(bot))
