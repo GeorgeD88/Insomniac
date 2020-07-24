@@ -17,7 +17,7 @@ class Down(commands.Cog):
         self.bot = bot
 
     @commands.command()  # TODO: Add any emoji
-    async def down(self, ctx, contains):
+    async def check(self, ctx, contains):
         global seeking
         if ctx.message.author.id != configuration.owner_id:
             embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)
@@ -33,8 +33,9 @@ class Down(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if seeking in message.content.lower() and seeking is not None:
-            await message.add_reaction('downvote:713867711293292555')
-            print('downvoted in ' + str(message.channel))
+            await message.delete()
+            await message.channel.send('no:heart:')
+            print(f'avoided {seeking} in {str(message.channel)}')
 
 
 def setup(bot):
