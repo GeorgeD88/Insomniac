@@ -8,7 +8,7 @@ from PIL import Image
 import os
 
 
-downing = None
+seeking = None
 
 
 class Down(commands.Cog):
@@ -17,22 +17,22 @@ class Down(commands.Cog):
         self.bot = bot
 
     @commands.command()  # TODO: Add any emoji
-    async def down(self, ctx, mention: discord.Member = None):
+    async def down(self, ctx, contains):
         global downing
         if ctx.message.author.id != configuration.owner_id:
             embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)
             await ctx.send(embed=embed)
             print(f'Access was restricted from {ctx.message.author}')
             return
-        if mention is None:
-            print('empty mention')
+        if contains is None:
+            print('empty argument')
             downing = None
             return
-        downing = mention.id
+        seeking = contains.lower()
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author.id == downing:
+        if seeking in message.lower():
             await message.add_reaction('downvote:713867711293292555')
             print('downvoted in ' + str(message.channel))
 
