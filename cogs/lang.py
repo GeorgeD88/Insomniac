@@ -39,12 +39,14 @@ class Lang(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        try:
+        if not interpreting:  # continuously exits the function until interpreting is set to true
+            return
+        try:  # tries setting the language detected to the full name from the ISO code
             source = iso[translator.detect(message.content).lang]
-        except KeyError:
+        except KeyError:  # if the ISO code isn't recognized, it just saves the ISO code
             source = translator.detect(message.content).lang
         content = message.content
-        if interpreting and source != 'English' and content != 'i!masslang' and message.author.id != self.bot.user.id:
+        if source != 'English' and content != 'i!masslang' and message.author.id != self.bot.user.id:
             await message.channel.send(translator.translate(content, dest='en').text)
             print(f'interpreted from {source} in channel: {str(message.channel)}')
 
