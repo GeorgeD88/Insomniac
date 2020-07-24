@@ -32,7 +32,7 @@ class Down(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if seeking in message.content.lower() and seeking is not None:
+        if seeking is not None and seeking in message.content.lower():
             await message.add_reaction('downvote:713867711293292555')
             print('downvoted in ' + str(message.channel))
 
