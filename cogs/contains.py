@@ -11,7 +11,7 @@ import os
 seeking = None
 
 
-class Down(commands.Cog):
+class Contains(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -39,4 +39,4 @@ class Down(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Down(bot))
+    bot.add_cog(Contains(bot))
