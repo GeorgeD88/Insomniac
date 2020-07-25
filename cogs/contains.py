@@ -8,6 +8,7 @@ from PIL import Image
 import os
 
 
+errorRed = 0xff0000
 seeking = None
 
 
