@@ -25,7 +25,7 @@ class Twitter(commands.Cog):
     @commands.command()
     async def tweet(self, ctx, *args):
         if ctx.message.author.id != configuration.owner_id:
-            embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)
+            embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command', color=errorRed)
             await ctx.send(embed=embed)
             print(f'Access was restricted from {ctx.message.author}')
             return
