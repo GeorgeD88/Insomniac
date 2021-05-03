@@ -11,6 +11,7 @@ import os
 bobbing = None
 
 
+# Emulates the spongebob meme where you imitate someone by togglecasing the messages
 class Sponge(commands.Cog):
 
     def __init__(self, bot):
