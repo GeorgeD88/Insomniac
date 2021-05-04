@@ -11,6 +11,7 @@ import os
 bobbing = None
 
 
+# Emulates the spongebob meme where you imitate someone by togglecasing the messages
 class Sponge(commands.Cog):
 
     def __init__(self, bot):
@@ -20,7 +21,7 @@ class Sponge(commands.Cog):
     async def bob(self, ctx, mention: discord.Member = None):
         global bobbing
         if ctx.message.author.id != configuration.owner_id:
-            embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command pussyass bitch', color=errorRed)
+            embed = discord.Embed(title=':stop_sign: **Access Restricted:** Only G-Unit himself can use this command', color=errorRed)
             await ctx.send(embed=embed)
             print(f'Access was restricted from {ctx.message.author}')
             return

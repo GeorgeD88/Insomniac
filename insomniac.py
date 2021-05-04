@@ -1,4 +1,3 @@
-# Insomniac is a discord bot that's gonna (hopefully) never be turned off.
 from discord.ext import commands
 import configuration
 import traceback
@@ -364,7 +363,7 @@ async def status(ctx, extension_name: str = None):
             elif not is_loaded(extension_name):
                 embed = discord.Embed(title=f':gear: **{extension_name.capitalize()} cog:** unloaded', color=unloadedOrange)
             else:
-                embed = discord.Embed(title='u done fucked up, expected boolean (is cog loaded?) but got some other weird fucked up data type shiiiiet',
+                embed = discord.Embed(title='u done messed up, expected boolean (is cog loaded?) but got some other weird messed up data type',
                                       color=errorRed)
             print(f'{extension_name} cog is {"loaded" if is_loaded(extension_name) else "unloaded"}')
 

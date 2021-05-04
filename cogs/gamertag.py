@@ -12,20 +12,21 @@ class Gamertag(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def new(self, ctx):
+    async def newtag(self, ctx):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         author_id = str(ctx.message.author.id)
         if author_id in list(data.keys()):
-            await ctx.send('Gamertag library already exists')
+            await ctx.send('This user already has a gamertag library')
             print('command aborted: id already exists')
         else:
             data[author_id] = {}
             with open(gamertags, 'w') as out_file:
                 json.dump(data, out_file)
+            await ctx.send('Created new library under this user')
 
     @commands.command()
-    async def add(self, ctx, platform, tag):
+    async def addtag(self, ctx, platform, tag):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         author_id = str(ctx.message.author.id)
@@ -34,7 +35,7 @@ class Gamertag(commands.Cog):
             json.dump(data, out_file)
 
     @commands.command()
-    async def view(self, ctx, mention, platform):
+    async def viewtag(self, ctx, mention, platform):
         with open(gamertags, 'r') as in_file:
             data = json.load(in_file)
         if platform.lower() == 'all':
